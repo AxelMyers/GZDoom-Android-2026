@@ -19,15 +19,14 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Make gradlew executable
+      - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
       - name: Build Debug APK
-        run: ./gradlew :doom:assembleDebug --stacktrace
+        run: ./gradlew :doom:assembleDebug
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
-        if: always()
         with:
-          name: Freedoom-Debug-APK
+          name: freedoom-debug-apk
           path: doom/build/outputs/apk/debug/*.apk
